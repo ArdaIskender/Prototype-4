@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb; // to make Player move
     private GameObject focalPoint; // to make Player movement based on where the camera is facing
     public float playerMoveSpeed = 5.0f; // to make Player move
+    public bool hasPowerup = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,14 @@ public class PlayerController : MonoBehaviour
     {
         float forwardInput = Input.GetAxis("Vertical"); // to make Player move
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * playerMoveSpeed); // to make player move + based on where the camera is facing
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Powerup"))
+        {
+            hasPowerup= true;
+            Destroy(other.gameObject);
+        }
     }
 }
