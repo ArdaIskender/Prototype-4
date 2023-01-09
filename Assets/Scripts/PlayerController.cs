@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb; // to make Player move
     private GameObject focalPoint; // to make Player movement based on where the camera is facing
     public float playerMoveSpeed = 5.0f; // to make Player move
+    public float powerupStrength = 15f; // when collided with enemy to send them away with powerup
     public bool hasPowerup = false;
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
         {
+            Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = collision.gameObject.transform.position - playerRb.transform.position;
+
+            enemyRb.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+
             Debug.Log("Collided with " + collision.gameObject.name + " and " + hasPowerup);
         }
     }
