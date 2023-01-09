@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float playerMoveSpeed = 5.0f; // to make Player move
     public float powerupStrength = 15f; // when collided with enemy to send them away with powerup
     public bool hasPowerup = false;
+    public GameObject powerupIndicator;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,19 +30,19 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerup = false;
+        powerupIndicator.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
         {
+            powerupIndicator.SetActive(true);
             hasPowerup= true;
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
-
-
 
     private void OnCollisionEnter(Collision collision)
     {
