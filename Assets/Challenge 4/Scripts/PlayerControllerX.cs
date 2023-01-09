@@ -8,7 +8,7 @@ public class PlayerControllerX : MonoBehaviour
     private float speed = 500;
     private GameObject focalPoint;
 
-    public bool hasPowerup;
+    public bool hasPowerup = false;
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
 
@@ -35,11 +35,12 @@ public class PlayerControllerX : MonoBehaviour
     // If Player collides with powerup, activate powerup
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Powerup"))
+        if (other.CompareTag("Powerup"))
         {
-            Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
+            Destroy(other.gameObject);
+            StartCoroutine(PowerupCooldown());
         }
     }
 
