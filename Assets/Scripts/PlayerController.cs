@@ -24,14 +24,23 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * playerMoveSpeed); // to make player move + based on where the camera is facing
     }
 
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
         {
             hasPowerup= true;
             Destroy(other.gameObject);
+            StartCoroutine(PowerupCountdownRoutine());
         }
     }
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
