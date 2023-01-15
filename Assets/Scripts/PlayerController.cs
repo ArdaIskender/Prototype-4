@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb; // to make Player move
     private GameObject focalPoint; // to make Player movement based on where the camera is facing
     public float playerMoveSpeed = 5.0f; // to make Player move
-    public float powerupStrength = 15f; // when collided with enemy to send them away with powerup
+    public float powerupStrength = 20f; // when collided with enemy to send them away with powerup
     public bool hasPowerup = false;
     public GameObject powerupIndicator;
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Powerup"))
+        if (other.CompareTag("Powerup") && hasPowerup==false)
         {
             powerupIndicator.SetActive(true);
             hasPowerup= true;
