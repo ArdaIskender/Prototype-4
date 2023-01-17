@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup : MonoBehaviour
+public enum PowerUpType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    None,
+    Pushback,
+    Rockets
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Rotate(0, 1, 0);
-    }
+public class PowerUp : MonoBehaviour
+{
+    public PowerUpType powerUpType;
 }
