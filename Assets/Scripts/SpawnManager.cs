@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// Every level only one powerup spawns.
-
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
@@ -9,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     private readonly float spawnRange = 9f;
     public int enemyCount;
     public int waveNumber = 1;
+
     // medium bonus features variables
     public GameObject[] powerupPrefabs;
 
