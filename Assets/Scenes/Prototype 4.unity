@@ -273,7 +273,7 @@ MonoBehaviour:
   enemyPrefab:
   - {fileID: 9175907032094861088, guid: ba41fea8d6f9409448d0ce3bdffa7b5b, type: 3}
   - {fileID: 9175907032094861088, guid: f7719a097410bb5429861f520fdea8b1, type: 3}
-  powerupPrefab: {fileID: 1677030378574161755, guid: cedcb433f91d22146ae59685e4966e88, type: 3}
+  spawnBoss: {fileID: 2282922462555071671, guid: 0d394124f51be5f46ab3bbf5dc294b99, type: 3}
   enemyCount: 0
   waveNumber: 1
   powerupPrefabs:
