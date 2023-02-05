@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
             enemyRb.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
 
-            Debug.Log("Player collided with " + collision.gameObject.name + " with powerup set to " + currentPowerUp.ToString());
+            //Debug.Log("Player collided with " + collision.gameObject.name + " with powerup set to " + currentPowerUp.ToString());
         }
     }
 
@@ -164,8 +164,6 @@ public class PlayerController : MonoBehaviour
             tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
         }
     }
-
-
 
     private void RestartScene()
     {
